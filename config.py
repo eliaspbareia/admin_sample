@@ -14,7 +14,7 @@ class Config():
 
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:senha@localhost:3306/dababasename'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:bot901@localhost:3306/botanico'
     SQLALCHEMY_ECHO = True
     
     POSTS_PER_PAGE = 3
