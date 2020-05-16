@@ -10,3 +10,4 @@ VENV/
 
 database/
 migrations/
+uploads/

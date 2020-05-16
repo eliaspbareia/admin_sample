@@ -7,8 +7,8 @@ from werkzeug.security import generate_password_hash
 
 
 class Usuarios(ModelView):
-    column_list = ('id', 'username', 'email')
-    column_searchable_list = ('username', 'email')
+    column_list = ('nome', 'username', 'email')
+    column_searchable_list = ('nome','username', 'email')
     can_create = True
     form_extra_fields = {
         'password': PasswordField('Password')
