@@ -1,0 +1,40 @@
+{% extends 'admin/master.html' %}
+<!-- {% block head_css %}
+{{super()}}
+
+<link href="{{ url_for('static', filename='css/menu.css') }}" rel="stylesheet">
+{% endblock %} -->
+
+{% block body %}
+{{ super() }}
+
+  <div class="row-fluid">
+    <div>
+      {% if current_user.is_authenticated %}
+        <h1>Área Administrativa</h1>
+        <p class="lead">
+          Usuário atuenticado como:  {{ current_user.username }}
+        </p>
+      {% else %}
+      <form action="" method="post">
+        {{ form.csrf_token }}
+        {% for f in form if f.type != 'CSRFTokenField' %}
+        <div>
+          {{ f.label }}
+          {{ f }}
+          {% if f.errors %}
+            <ul>
+              {% for e in f.errors %}
+              <li>{{ e }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        {% endfor%}
+        <button type="submit" class="btn">Logar</button>
+      </form>
+      {{ link | safe }}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

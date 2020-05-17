@@ -1,18 +1,40 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
 from datetime import  datetime
-from app import db
+
+db = SQLAlchemy()
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100))
     email = db.Column(db.String(100))
-    username = db.Column(db.String(80))
-    password = db.Column(db.String(255))    
-    update = db.Column(db.DateTime)
+    username = db.Column(db.String(100))
+    password = db.Column(db.String(255))
 
     def __repr__(self):
-        return '<User {}'.format(self.username)
+        return 'Usuário {}'.format(self.username)
+
+    # Flask-login integração
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id
+
+    # requerido para interface administratica
+    def __unicode__(self):
+        return self.username
+
 
 class Post(db.Model):
     # id author title body content thumb post_date
