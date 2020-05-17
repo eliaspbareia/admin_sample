@@ -11,3 +11,5 @@ VENV/
 database/
 migrations/
 uploads/
+
+config.py
